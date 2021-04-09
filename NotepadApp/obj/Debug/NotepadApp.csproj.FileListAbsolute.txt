@@ -1,0 +1,25 @@
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\bin\Debug\NotepadApp.exe.config
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\bin\Debug\NotepadApp.exe
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\bin\Debug\NotepadApp.pdb
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\obj\Debug\NotepadApp.csprojAssemblyReference.cache
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\obj\Debug\NotepadApp.LoginPage.resources
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\obj\Debug\NotepadApp.Properties.Resources.resources
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\obj\Debug\NotepadApp.SignUpPage.resources
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\obj\Debug\NotepadApp.csproj.GenerateResource.cache
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\obj\Debug\NotepadApp.csproj.CoreCompileInputs.cache
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\obj\Debug\NotepadApp.exe
+C:\Users\elnur\OneDrive\Documents\Visual Studio 2019\Projects\NotepadApp\NotepadApp\obj\Debug\NotepadApp.pdb
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\bin\Debug\NotepadApp.exe.config
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\bin\Debug\NotepadApp.exe
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\bin\Debug\NotepadApp.pdb
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.csprojAssemblyReference.cache
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.LoginPage.resources
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.Properties.Resources.resources
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.SignUpPage.resources
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.csproj.GenerateResource.cache
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.csproj.CoreCompileInputs.cache
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.exe
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.pdb
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.Notepad.resources
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.AddNoteMessageBox.resources
+C:\Users\elnur\OneDrive\Desktop\NotepadApp\NotepadApp\obj\Debug\NotepadApp.NoteDetail.resources
