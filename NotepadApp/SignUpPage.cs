@@ -54,7 +54,7 @@ namespace NotepadApp
 		{
 			LoginPage loginPage = new LoginPage();
 			loginPage.Show();
-			Hide();
+			Close();
 		}
 
 		private void SignUpButton_Click(object sender, EventArgs e)

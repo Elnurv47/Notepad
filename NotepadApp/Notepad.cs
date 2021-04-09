@@ -38,7 +38,7 @@ namespace NotepadApp
 
 		private void DeserializeAllNotes()
 		{
-			string[] files = Directory.GetFiles(@"Notes\");
+			string[] files = CreateNotesFolderIfNotExists();
 
 			foreach (string file in files)
 			{
@@ -48,6 +48,22 @@ namespace NotepadApp
 				notes.Add(note);
 			}
 		}
+
+		private string[] CreateNotesFolderIfNotExists()
+		{
+			string[] files = new string[0];
+
+			if (Directory.Exists(@"Notes\"))
+			{
+				files = Directory.GetFiles(@"Notes\");
+			}
+			else
+			{
+				Directory.CreateDirectory(@"Notes\");
+			}
+			return files;
+		}
+
 		private void SortNotes() => notes.Sort(new NoteSorter());
 
 		private void DisplayNotes()
