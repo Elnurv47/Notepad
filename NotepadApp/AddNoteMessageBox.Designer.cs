@@ -30,14 +30,14 @@ namespace NotepadApp
 		private void InitializeComponent()
 		{
 			this.closeButton = new System.Windows.Forms.Button();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.headerPanel = new System.Windows.Forms.Panel();
 			this.addNewNoteLabel = new System.Windows.Forms.Label();
 			this.noteNameLabel = new System.Windows.Forms.Label();
 			this.noteNameTextBox = new System.Windows.Forms.TextBox();
 			this.yourNoteLabel = new System.Windows.Forms.Label();
 			this.noteMessageTextBox = new System.Windows.Forms.TextBox();
 			this.saveNoteButton = new System.Windows.Forms.Button();
-			this.panel1.SuspendLayout();
+			this.headerPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// closeButton
@@ -55,15 +55,16 @@ namespace NotepadApp
 			this.closeButton.UseVisualStyleBackColor = false;
 			this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
 			// 
-			// panel1
+			// headerPanel
 			// 
-			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(170)))), ((int)(((byte)(252)))));
-			this.panel1.Controls.Add(this.addNewNoteLabel);
-			this.panel1.Controls.Add(this.closeButton);
-			this.panel1.Location = new System.Drawing.Point(-1, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(395, 43);
-			this.panel1.TabIndex = 43;
+			this.headerPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(170)))), ((int)(((byte)(252)))));
+			this.headerPanel.Controls.Add(this.addNewNoteLabel);
+			this.headerPanel.Controls.Add(this.closeButton);
+			this.headerPanel.Location = new System.Drawing.Point(-1, 0);
+			this.headerPanel.Name = "headerPanel";
+			this.headerPanel.Size = new System.Drawing.Size(395, 43);
+			this.headerPanel.TabIndex = 43;
+			this.headerPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.HeaderPanel_MouseDown);
 			// 
 			// addNewNoteLabel
 			// 
@@ -139,11 +140,11 @@ namespace NotepadApp
 			this.Controls.Add(this.yourNoteLabel);
 			this.Controls.Add(this.noteNameTextBox);
 			this.Controls.Add(this.noteNameLabel);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.headerPanel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "AddNoteMessageBox";
 			this.Text = "AddNoteMessageBox";
-			this.panel1.ResumeLayout(false);
+			this.headerPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -152,7 +153,7 @@ namespace NotepadApp
 		#endregion
 
 		private System.Windows.Forms.Button closeButton;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel headerPanel;
 		private System.Windows.Forms.Label addNewNoteLabel;
 		private System.Windows.Forms.Label noteNameLabel;
 		private System.Windows.Forms.TextBox noteNameTextBox;

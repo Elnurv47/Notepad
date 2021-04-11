@@ -16,9 +16,18 @@ namespace NotepadApp
 		[DllImport("user32.dll")]
 		public static extern bool ReleaseCapture();
 
-		private void Form1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void LoginPage_MouseDown(object sender, MouseEventArgs e)
 		{
-			if (e.Button == MouseButtons.Left)
+			if (e.Button == MouseButtons.Left && e.Clicks == 1)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
+		}
+
+		private void LeftPanel_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left && e.Clicks == 1)
 			{
 				ReleaseCapture();
 				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
@@ -143,7 +152,7 @@ namespace NotepadApp
 			{
 				if (user.Password == userAccountInDatabase.Password)
 				{
-					LoginUser();
+					LoginUser(user);
 					ResetWarningLabels();
 				}
 				else
@@ -153,8 +162,9 @@ namespace NotepadApp
 			}
 		}
 
-		private void LoginUser()
+		private void LoginUser(User user)
 		{
+			AccountManager.CurrentUser = user;
 			Notepad notepad = new Notepad();
 			notepad.Show();
 			Hide();
@@ -175,6 +185,18 @@ namespace NotepadApp
 			{
 				SetUsernameTextBox(Properties.Resources.user_blue, Color.FromArgb(28, 170, 252));
 				SetPasswordTextBox(Properties.Resources.padlock, Color.White);
+			}
+		}
+
+		private void ShowPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (passwordTextBox.PasswordChar == '\0')
+			{
+				passwordTextBox.PasswordChar = '*';
+			}
+			else
+			{
+				passwordTextBox.PasswordChar = '\0';
 			}
 		}
 	}

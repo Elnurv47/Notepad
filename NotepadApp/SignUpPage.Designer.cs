@@ -45,6 +45,7 @@ namespace NotepadApp
 			this.usernameBottomLinePanel = new System.Windows.Forms.Panel();
 			this.backgroundLeftPanel = new System.Windows.Forms.Panel();
 			this.applicatonNameLabel = new System.Windows.Forms.Label();
+			this.showPasswordCheckBox = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.passwordIcon)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.profileIconPictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.usernameIcon)).BeginInit();
@@ -101,6 +102,7 @@ namespace NotepadApp
 			this.passwordTextBox.Location = new System.Drawing.Point(414, 297);
 			this.passwordTextBox.Multiline = true;
 			this.passwordTextBox.Name = "passwordTextBox";
+			this.passwordTextBox.PasswordChar = '*';
 			this.passwordTextBox.Size = new System.Drawing.Size(246, 32);
 			this.passwordTextBox.TabIndex = 39;
 			this.passwordTextBox.Click += new System.EventHandler(this.PasswordTextBox_Click);
@@ -218,12 +220,24 @@ namespace NotepadApp
 			this.applicatonNameLabel.Text = "NOTEPAD";
 			this.applicatonNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// showPasswordCheckBox
+			// 
+			this.showPasswordCheckBox.AutoSize = true;
+			this.showPasswordCheckBox.Location = new System.Drawing.Point(377, 343);
+			this.showPasswordCheckBox.Name = "showPasswordCheckBox";
+			this.showPasswordCheckBox.Size = new System.Drawing.Size(102, 17);
+			this.showPasswordCheckBox.TabIndex = 43;
+			this.showPasswordCheckBox.Text = "Show Password";
+			this.showPasswordCheckBox.UseVisualStyleBackColor = true;
+			this.showPasswordCheckBox.CheckedChanged += new System.EventHandler(this.ShowPasswordCheckBox_CheckedChanged);
+			// 
 			// SignUpPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(700, 550);
+			this.Controls.Add(this.showPasswordCheckBox);
 			this.Controls.Add(this.backgroundLeftPanel);
 			this.Controls.Add(this.passwordIcon);
 			this.Controls.Add(this.profileIconPictureBox);
@@ -241,6 +255,7 @@ namespace NotepadApp
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "SignUpPage";
 			this.Text = "SignUpPage";
+			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SignupPage_MouseDown);
 			((System.ComponentModel.ISupportInitialize)(this.passwordIcon)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.profileIconPictureBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.usernameIcon)).EndInit();
@@ -267,5 +282,6 @@ namespace NotepadApp
 		private System.Windows.Forms.Panel usernameBottomLinePanel;
 		private System.Windows.Forms.Panel backgroundLeftPanel;
 		private System.Windows.Forms.Label applicatonNameLabel;
+		private System.Windows.Forms.CheckBox showPasswordCheckBox;
 	}
 }

@@ -47,6 +47,7 @@ namespace NotepadApp
 			this.applicationNameLabel = new System.Windows.Forms.Label();
 			this.usernameWarningLabel = new System.Windows.Forms.Label();
 			this.passwordWarningLabel = new System.Windows.Forms.Label();
+			this.showPasswordCheckBox = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.passwordIcon)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.profileIconPictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.usernameIcon)).BeginInit();
@@ -85,6 +86,7 @@ namespace NotepadApp
 			this.passwordTextBox.Location = new System.Drawing.Point(414, 301);
 			this.passwordTextBox.Multiline = true;
 			this.passwordTextBox.Name = "passwordTextBox";
+			this.passwordTextBox.PasswordChar = '*';
 			this.passwordTextBox.Size = new System.Drawing.Size(246, 32);
 			this.passwordTextBox.TabIndex = 25;
 			this.passwordTextBox.Click += new System.EventHandler(this.PasswordTextBox_Click);
@@ -207,10 +209,11 @@ namespace NotepadApp
 			this.leftPanel.Name = "leftPanel";
 			this.leftPanel.Size = new System.Drawing.Size(330, 550);
 			this.leftPanel.TabIndex = 28;
+			this.leftPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LeftPanel_MouseDown);
 			// 
 			// applicationNameLabel
 			// 
-			this.applicationNameLabel.Font = new System.Drawing.Font("Viner Hand ITC", 38.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.applicationNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 38.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.applicationNameLabel.ForeColor = System.Drawing.SystemColors.Control;
 			this.applicationNameLabel.Location = new System.Drawing.Point(0, 206);
 			this.applicationNameLabel.Name = "applicationNameLabel";
@@ -237,12 +240,24 @@ namespace NotepadApp
 			this.passwordWarningLabel.Size = new System.Drawing.Size(283, 23);
 			this.passwordWarningLabel.TabIndex = 30;
 			// 
+			// showPasswordCheckBox
+			// 
+			this.showPasswordCheckBox.AutoSize = true;
+			this.showPasswordCheckBox.Location = new System.Drawing.Point(376, 350);
+			this.showPasswordCheckBox.Name = "showPasswordCheckBox";
+			this.showPasswordCheckBox.Size = new System.Drawing.Size(102, 17);
+			this.showPasswordCheckBox.TabIndex = 31;
+			this.showPasswordCheckBox.Text = "Show Password";
+			this.showPasswordCheckBox.UseVisualStyleBackColor = true;
+			this.showPasswordCheckBox.CheckedChanged += new System.EventHandler(this.ShowPasswordCheckBox_CheckedChanged);
+			// 
 			// LoginPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(700, 550);
+			this.Controls.Add(this.showPasswordCheckBox);
 			this.Controls.Add(this.passwordWarningLabel);
 			this.Controls.Add(this.usernameWarningLabel);
 			this.Controls.Add(this.leftPanel);
@@ -262,6 +277,7 @@ namespace NotepadApp
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "LoginPage";
 			this.Text = "LoginPage";
+			this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LoginPage_MouseDown);
 			((System.ComponentModel.ISupportInitialize)(this.passwordIcon)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.profileIconPictureBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.usernameIcon)).EndInit();
@@ -290,5 +306,6 @@ namespace NotepadApp
 		private System.Windows.Forms.Label applicationNameLabel;
 		private System.Windows.Forms.Label usernameWarningLabel;
 		private System.Windows.Forms.Label passwordWarningLabel;
+		private System.Windows.Forms.CheckBox showPasswordCheckBox;
 	}
 }

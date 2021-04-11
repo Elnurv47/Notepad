@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace NotepadApp
@@ -40,7 +41,11 @@ namespace NotepadApp
 			Controls.Add(deleteNoteButton);
 		}
 
-		private void DeleteNoteButton_Click(object sender, EventArgs e) => Dispose();
+		private void DeleteNoteButton_Click(object sender, EventArgs e)
+		{
+			Dispose();
+			File.Delete($@"Notes\{note.Name}");
+		}
 
 		private void InitializeNoteNameLabel()
 		{

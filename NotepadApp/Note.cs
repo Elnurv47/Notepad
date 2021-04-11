@@ -34,10 +34,11 @@ namespace NotepadApp
 
 		public void Save()
 		{
-			FileStream fileStream = new FileStream($@"Notes\{name}.dat", FileMode.OpenOrCreate);
-			BinaryFormatter formatter = new BinaryFormatter();
-			formatter.Serialize(fileStream, this);
-			fileStream.Close();
+			using (FileStream fileStream = new FileStream($@"Notes\{AccountManager.CurrentUser.Username}\{name}.dat", FileMode.Create))
+			{
+				BinaryFormatter formatter = new BinaryFormatter();
+				formatter.Serialize(fileStream, this);
+			}
 		}
 	}
 }

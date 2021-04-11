@@ -16,7 +16,7 @@ namespace NotepadApp
 		[DllImport("user32.dll")]
 		public static extern bool ReleaseCapture();
 
-		private void Form1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void SignupPage_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Left)
 			{
@@ -80,10 +80,16 @@ namespace NotepadApp
 			string enteredUsername = usernameTextBox.Text;
 			string enteredPassword = passwordTextBox.Text;
 
-			using (StreamWriter streamWriter = new StreamWriter(path))
+			FileStream fileStream = File.Open(path, FileMode.Append);
+
+			using (StreamWriter streamWriter = new StreamWriter(fileStream))
 			{
 				streamWriter.WriteLine($"{enteredUsername} {enteredPassword}");
 			}
+
+			fileStream.Close();
+
+			AccountManager.CurrentUser = new User(enteredUsername, enteredPassword);
 
 			Notepad notepad = new Notepad();
 			notepad.Show();
@@ -105,6 +111,18 @@ namespace NotepadApp
 			{
 				SetUsernameTextBox(Properties.Resources.user_blue, Color.FromArgb(28, 170, 252));
 				SetPasswordTextBox(Properties.Resources.padlock, Color.White);
+			}
+		}
+
+		private void ShowPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
+		{
+			if (passwordTextBox.PasswordChar == '\0')
+			{
+				passwordTextBox.PasswordChar = '*';
+			}
+			else
+			{
+				passwordTextBox.PasswordChar = '\0';
 			}
 		}
 	}

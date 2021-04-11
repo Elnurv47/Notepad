@@ -17,9 +17,9 @@ namespace NotepadApp
 		[DllImport("user32.dll")]
 		public static extern bool ReleaseCapture();
 
-		private void Form1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		private void HeaderPanel_MouseDown(object sender, MouseEventArgs e)
 		{
-			if (e.Button == MouseButtons.Left)
+			if (e.Button == MouseButtons.Left && e.Clicks == 1)
 			{
 				ReleaseCapture();
 				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
@@ -59,16 +59,26 @@ namespace NotepadApp
 
 		private void DeserializeAllNotes()
 		{
-			string[] files = CreateNotesFolderIfNotExists();
+			CreateNotesFolderIfNotExists();
+			string[] files = Directory.GetFiles($@"Notes\{AccountManager.CurrentUser.Username}");
 
 			foreach (string file in files)
 			{
 				FileStream fileStream = new FileStream(file, FileMode.Open);
 				BinaryFormatter formatter = new BinaryFormatter();
 				Note note = (Note)formatter.Deserialize(fileStream);
+				fileStream.Close();
 				notes.Add(note);
 			}
 		}
+		private void CreateNotesFolderIfNotExists()
+		{
+			if (!Directory.Exists($@"Notes\{AccountManager.CurrentUser.Username}"))
+			{
+				Directory.CreateDirectory($@"Notes\{AccountManager.CurrentUser.Username}");
+			}
+		}
+
 		private void DisplayNotes()
 		{
 			foreach (Note note in notes)
@@ -79,21 +89,6 @@ namespace NotepadApp
 				noteUI.NoteNameLabel.Text = note.Name;
 				noteUI.Show();
 			}
-		}
-
-		private string[] CreateNotesFolderIfNotExists()
-		{
-			string[] files = new string[0];
-
-			if (Directory.Exists(@"Notes\"))
-			{
-				files = Directory.GetFiles(@"Notes\");
-			}
-			else
-			{
-				Directory.CreateDirectory(@"Notes\");
-			}
-			return files;
 		}
 
 		private void SortNotes() => notes.Sort(new NoteSorter());
@@ -121,5 +116,5 @@ namespace NotepadApp
 		}
 
 		public void AddNoteToLayout(NoteUI noteUI) => noteLayoutPanel.Controls.Add(noteUI);
-	}
+    }
 }

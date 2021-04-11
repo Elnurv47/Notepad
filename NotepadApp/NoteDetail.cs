@@ -14,15 +14,6 @@ namespace NotepadApp
 		[DllImport("user32.dll")]
 		public static extern bool ReleaseCapture();
 
-		private void Form1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-			if (e.Button == MouseButtons.Left)
-			{
-				ReleaseCapture();
-				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-			}
-		}
-
 		public Label NoteNameLabel => noteNameLabel;
 		public TextBox NoteMessageTextBox => noteMessageTextBox;
 		public NoteDetail()
@@ -35,5 +26,23 @@ namespace NotepadApp
 			Notepad.OneNoteIsAlreadyOpen = false;
 			Close();
 		}
-	}
+
+        private void NoteDetail_MouseDown(object sender, MouseEventArgs e)
+        {
+			if (e.Button == MouseButtons.Left && e.Clicks == 1)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
+		}
+
+        private void noteNameLabel_MouseDown(object sender, MouseEventArgs e)
+        {
+			if (e.Button == MouseButtons.Left && e.Clicks == 1)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
+		}
+    }
 }
