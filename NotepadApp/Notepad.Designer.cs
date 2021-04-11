@@ -39,6 +39,7 @@ namespace NotepadApp
 			// 
 			// noteLayoutPanel
 			// 
+			this.noteLayoutPanel.AutoScroll = true;
 			this.noteLayoutPanel.Location = new System.Drawing.Point(8, 50);
 			this.noteLayoutPanel.Name = "noteLayoutPanel";
 			this.noteLayoutPanel.Size = new System.Drawing.Size(628, 423);
@@ -106,6 +107,7 @@ namespace NotepadApp
 			this.Controls.Add(this.noteLayoutPanel);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "Notepad";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Notepad";
 			this.Load += new System.EventHandler(this.Notepad_Load);
 			this.panel1.ResumeLayout(false);

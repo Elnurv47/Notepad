@@ -80,6 +80,8 @@ namespace NotepadApp
 			this.Controls.Add(this.closeButton);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 			this.Name = "NoteDetail";
+			this.ShowInTaskbar = false;
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "NoteDetail";
 			this.ResumeLayout(false);
 			this.PerformLayout();

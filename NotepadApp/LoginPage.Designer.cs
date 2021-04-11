@@ -43,12 +43,14 @@ namespace NotepadApp
 			this.usernameIcon = new System.Windows.Forms.PictureBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.usernameBottomLinePanel = new System.Windows.Forms.Panel();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.leftPanel = new System.Windows.Forms.Panel();
 			this.applicationNameLabel = new System.Windows.Forms.Label();
+			this.usernameWarningLabel = new System.Windows.Forms.Label();
+			this.passwordWarningLabel = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.passwordIcon)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.profileIconPictureBox)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.usernameIcon)).BeginInit();
-			this.panel1.SuspendLayout();
+			this.leftPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// closeButton
@@ -61,12 +63,14 @@ namespace NotepadApp
 			this.closeButton.Name = "closeButton";
 			this.closeButton.Size = new System.Drawing.Size(46, 46);
 			this.closeButton.TabIndex = 27;
+			this.closeButton.TabStop = false;
 			this.closeButton.Text = "X";
 			this.closeButton.UseVisualStyleBackColor = false;
 			this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
 			// 
 			// passwordIcon
 			// 
+			this.passwordIcon.Image = global::NotepadApp.Properties.Resources.padlock;
 			this.passwordIcon.Location = new System.Drawing.Point(376, 301);
 			this.passwordIcon.Name = "passwordIcon";
 			this.passwordIcon.Size = new System.Drawing.Size(32, 32);
@@ -83,6 +87,8 @@ namespace NotepadApp
 			this.passwordTextBox.Name = "passwordTextBox";
 			this.passwordTextBox.Size = new System.Drawing.Size(246, 32);
 			this.passwordTextBox.TabIndex = 25;
+			this.passwordTextBox.Click += new System.EventHandler(this.PasswordTextBox_Click);
+			this.passwordTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.PasswordTextBox_PreviewKeyDown);
 			// 
 			// usernameTextBox
 			// 
@@ -94,6 +100,7 @@ namespace NotepadApp
 			this.usernameTextBox.Name = "usernameTextBox";
 			this.usernameTextBox.Size = new System.Drawing.Size(244, 32);
 			this.usernameTextBox.TabIndex = 24;
+			this.usernameTextBox.Click += new System.EventHandler(this.UsernameTextBox_Click);
 			this.usernameTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.UsernameTextBox_PreviewKeyDown);
 			// 
 			// dontHaveAnAccountButton
@@ -107,6 +114,7 @@ namespace NotepadApp
 			this.dontHaveAnAccountButton.Name = "dontHaveAnAccountButton";
 			this.dontHaveAnAccountButton.Size = new System.Drawing.Size(285, 38);
 			this.dontHaveAnAccountButton.TabIndex = 23;
+			this.dontHaveAnAccountButton.TabStop = false;
 			this.dontHaveAnAccountButton.Text = "Don\'t Have an Account ?";
 			this.dontHaveAnAccountButton.UseVisualStyleBackColor = false;
 			this.dontHaveAnAccountButton.Click += new System.EventHandler(this.DontHaveAnAccount_Click);
@@ -121,6 +129,7 @@ namespace NotepadApp
 			this.loginButton.Name = "loginButton";
 			this.loginButton.Size = new System.Drawing.Size(104, 38);
 			this.loginButton.TabIndex = 22;
+			this.loginButton.TabStop = false;
 			this.loginButton.Text = "Login";
 			this.loginButton.UseVisualStyleBackColor = false;
 			this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
@@ -165,6 +174,7 @@ namespace NotepadApp
 			// 
 			// usernameIcon
 			// 
+			this.usernameIcon.Image = global::NotepadApp.Properties.Resources.user_blue;
 			this.usernameIcon.Location = new System.Drawing.Point(376, 204);
 			this.usernameIcon.Name = "usernameIcon";
 			this.usernameIcon.Size = new System.Drawing.Size(32, 32);
@@ -183,19 +193,20 @@ namespace NotepadApp
 			// 
 			// usernameBottomLinePanel
 			// 
+			this.usernameBottomLinePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(170)))), ((int)(((byte)(252)))));
 			this.usernameBottomLinePanel.Location = new System.Drawing.Point(376, 242);
 			this.usernameBottomLinePanel.Name = "usernameBottomLinePanel";
 			this.usernameBottomLinePanel.Size = new System.Drawing.Size(284, 2);
 			this.usernameBottomLinePanel.TabIndex = 16;
 			// 
-			// panel1
+			// leftPanel
 			// 
-			this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(170)))), ((int)(((byte)(252)))));
-			this.panel1.Controls.Add(this.applicationNameLabel);
-			this.panel1.Location = new System.Drawing.Point(1, -2);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(330, 551);
-			this.panel1.TabIndex = 28;
+			this.leftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(170)))), ((int)(((byte)(252)))));
+			this.leftPanel.Controls.Add(this.applicationNameLabel);
+			this.leftPanel.Location = new System.Drawing.Point(1, -2);
+			this.leftPanel.Name = "leftPanel";
+			this.leftPanel.Size = new System.Drawing.Size(330, 550);
+			this.leftPanel.TabIndex = 28;
 			// 
 			// applicationNameLabel
 			// 
@@ -208,13 +219,33 @@ namespace NotepadApp
 			this.applicationNameLabel.Text = "NOTEPAD";
 			this.applicationNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
+			// usernameWarningLabel
+			// 
+			this.usernameWarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.usernameWarningLabel.ForeColor = System.Drawing.Color.Red;
+			this.usernameWarningLabel.Location = new System.Drawing.Point(377, 247);
+			this.usernameWarningLabel.Name = "usernameWarningLabel";
+			this.usernameWarningLabel.Size = new System.Drawing.Size(283, 23);
+			this.usernameWarningLabel.TabIndex = 29;
+			// 
+			// passwordWarningLabel
+			// 
+			this.passwordWarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.passwordWarningLabel.ForeColor = System.Drawing.Color.Red;
+			this.passwordWarningLabel.Location = new System.Drawing.Point(377, 344);
+			this.passwordWarningLabel.Name = "passwordWarningLabel";
+			this.passwordWarningLabel.Size = new System.Drawing.Size(283, 23);
+			this.passwordWarningLabel.TabIndex = 30;
+			// 
 			// LoginPage
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(700, 550);
-			this.Controls.Add(this.panel1);
+			this.Controls.Add(this.passwordWarningLabel);
+			this.Controls.Add(this.usernameWarningLabel);
+			this.Controls.Add(this.leftPanel);
 			this.Controls.Add(this.closeButton);
 			this.Controls.Add(this.passwordIcon);
 			this.Controls.Add(this.passwordTextBox);
@@ -234,7 +265,7 @@ namespace NotepadApp
 			((System.ComponentModel.ISupportInitialize)(this.passwordIcon)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.profileIconPictureBox)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.usernameIcon)).EndInit();
-			this.panel1.ResumeLayout(false);
+			this.leftPanel.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -255,7 +286,9 @@ namespace NotepadApp
 		private System.Windows.Forms.PictureBox usernameIcon;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Panel usernameBottomLinePanel;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel leftPanel;
 		private System.Windows.Forms.Label applicationNameLabel;
+		private System.Windows.Forms.Label usernameWarningLabel;
+		private System.Windows.Forms.Label passwordWarningLabel;
 	}
 }

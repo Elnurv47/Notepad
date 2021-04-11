@@ -53,6 +53,7 @@ namespace NotepadApp
 			// 
 			// passwordIcon
 			// 
+			this.passwordIcon.Image = global::NotepadApp.Properties.Resources.padlock;
 			this.passwordIcon.Location = new System.Drawing.Point(376, 297);
 			this.passwordIcon.Name = "passwordIcon";
 			this.passwordIcon.Size = new System.Drawing.Size(32, 32);
@@ -70,6 +71,7 @@ namespace NotepadApp
 			// 
 			// usernameIcon
 			// 
+			this.usernameIcon.Image = global::NotepadApp.Properties.Resources.user_blue;
 			this.usernameIcon.Location = new System.Drawing.Point(376, 200);
 			this.usernameIcon.Name = "usernameIcon";
 			this.usernameIcon.Size = new System.Drawing.Size(32, 32);
@@ -85,7 +87,8 @@ namespace NotepadApp
 			this.closeButton.Location = new System.Drawing.Point(655, 0);
 			this.closeButton.Name = "closeButton";
 			this.closeButton.Size = new System.Drawing.Size(46, 46);
-			this.closeButton.TabIndex = 41;
+			this.closeButton.TabIndex = 40;
+			this.closeButton.TabStop = false;
 			this.closeButton.Text = "X";
 			this.closeButton.UseVisualStyleBackColor = false;
 			this.closeButton.Click += new System.EventHandler(this.CloseButton_Click);
@@ -100,6 +103,8 @@ namespace NotepadApp
 			this.passwordTextBox.Name = "passwordTextBox";
 			this.passwordTextBox.Size = new System.Drawing.Size(246, 32);
 			this.passwordTextBox.TabIndex = 39;
+			this.passwordTextBox.Click += new System.EventHandler(this.PasswordTextBox_Click);
+			this.passwordTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.PasswordTextBox_PreviewKeyDown);
 			// 
 			// usernameTextBox
 			// 
@@ -111,6 +116,7 @@ namespace NotepadApp
 			this.usernameTextBox.Name = "usernameTextBox";
 			this.usernameTextBox.Size = new System.Drawing.Size(244, 32);
 			this.usernameTextBox.TabIndex = 38;
+			this.usernameTextBox.Click += new System.EventHandler(this.UsernameTextBox_Click);
 			this.usernameTextBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.UsernameTextBox_PreviewKeyDown);
 			// 
 			// alreadyHaveAnAccountButton
@@ -124,6 +130,7 @@ namespace NotepadApp
 			this.alreadyHaveAnAccountButton.Name = "alreadyHaveAnAccountButton";
 			this.alreadyHaveAnAccountButton.Size = new System.Drawing.Size(285, 38);
 			this.alreadyHaveAnAccountButton.TabIndex = 37;
+			this.alreadyHaveAnAccountButton.TabStop = false;
 			this.alreadyHaveAnAccountButton.Text = "Already Have an Account ?";
 			this.alreadyHaveAnAccountButton.UseVisualStyleBackColor = false;
 			this.alreadyHaveAnAccountButton.Click += new System.EventHandler(this.AlreadyHaveAnAccountButton_Click);
@@ -138,6 +145,7 @@ namespace NotepadApp
 			this.loginButton.Name = "loginButton";
 			this.loginButton.Size = new System.Drawing.Size(104, 38);
 			this.loginButton.TabIndex = 36;
+			this.loginButton.TabStop = false;
 			this.loginButton.Text = "Sign Up";
 			this.loginButton.UseVisualStyleBackColor = false;
 			this.loginButton.Click += new System.EventHandler(this.SignUpButton_Click);
@@ -183,6 +191,7 @@ namespace NotepadApp
 			// 
 			// usernameBottomLinePanel
 			// 
+			this.usernameBottomLinePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(28)))), ((int)(((byte)(170)))), ((int)(((byte)(252)))));
 			this.usernameBottomLinePanel.Location = new System.Drawing.Point(376, 238);
 			this.usernameBottomLinePanel.Name = "usernameBottomLinePanel";
 			this.usernameBottomLinePanel.Size = new System.Drawing.Size(284, 2);
@@ -195,16 +204,16 @@ namespace NotepadApp
 			this.backgroundLeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
 			this.backgroundLeftPanel.Location = new System.Drawing.Point(0, 0);
 			this.backgroundLeftPanel.Name = "backgroundLeftPanel";
-			this.backgroundLeftPanel.Size = new System.Drawing.Size(350, 550);
+			this.backgroundLeftPanel.Size = new System.Drawing.Size(330, 550);
 			this.backgroundLeftPanel.TabIndex = 42;
 			// 
 			// applicatonNameLabel
 			// 
 			this.applicatonNameLabel.Font = new System.Drawing.Font("Viner Hand ITC", 38.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.applicatonNameLabel.ForeColor = System.Drawing.SystemColors.Control;
-			this.applicatonNameLabel.Location = new System.Drawing.Point(0, 200);
+			this.applicatonNameLabel.Location = new System.Drawing.Point(3, 224);
 			this.applicatonNameLabel.Name = "applicatonNameLabel";
-			this.applicatonNameLabel.Size = new System.Drawing.Size(347, 100);
+			this.applicatonNameLabel.Size = new System.Drawing.Size(324, 100);
 			this.applicatonNameLabel.TabIndex = 0;
 			this.applicatonNameLabel.Text = "NOTEPAD";
 			this.applicatonNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

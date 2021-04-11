@@ -2,16 +2,37 @@
 using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace NotepadApp
 {
 	public partial class Notepad : Form
 	{
+		public const int WM_NCLBUTTONDOWN = 0xA1;
+		public const int HT_CAPTION = 0x2;
+
+		[DllImport("user32.dll")]
+		public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+		[DllImport("user32.dll")]
+		public static extern bool ReleaseCapture();
+
+		private void Form1_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				ReleaseCapture();
+				SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+			}
+		}
+
 		private List<Note> notes;
 		
 		private static int currentNoteIndex = 0;
 		public static int CurrentNoteIndex { get => currentNoteIndex; set => currentNoteIndex = value; }
+
+		private static bool oneNoteIsAlreadyOpen = false;
+		public static bool OneNoteIsAlreadyOpen { get => oneNoteIsAlreadyOpen; set => oneNoteIsAlreadyOpen = value; }
 
 		private const string CURRENT_NOTE_INDEX_FILE_PATH = "currentNoteIndex.txt";
 
@@ -48,6 +69,17 @@ namespace NotepadApp
 				notes.Add(note);
 			}
 		}
+		private void DisplayNotes()
+		{
+			foreach (Note note in notes)
+			{
+				NoteUI noteUI = new NoteUI();
+				noteUI.SetNote(note);
+				noteLayoutPanel.Controls.Add(noteUI);
+				noteUI.NoteNameLabel.Text = note.Name;
+				noteUI.Show();
+			}
+		}
 
 		private string[] CreateNotesFolderIfNotExists()
 		{
@@ -66,17 +98,6 @@ namespace NotepadApp
 
 		private void SortNotes() => notes.Sort(new NoteSorter());
 
-		private void DisplayNotes()
-		{
-			foreach (Note note in notes)
-			{
-				NoteUI noteUI = new NoteUI();
-				noteUI.SetNote(note);
-				noteLayoutPanel.Controls.Add(noteUI);
-				noteUI.NoteNameLabel.Text = note.Name;
-				noteUI.Show();
-			}
-		}
 
 		private void AddNoteButton_Click(object sender, EventArgs e)
 		{
@@ -87,8 +108,8 @@ namespace NotepadApp
 		private void CloseButton_Click(object sender, EventArgs e)
 		{
 			SaveCurrentNoteIndex();
-			
-			Close();
+
+			Application.Exit();
 		}
 
 		private void SaveCurrentNoteIndex()

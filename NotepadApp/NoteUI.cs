@@ -7,6 +7,7 @@ namespace NotepadApp
 	public partial class NoteUI : Control
 	{
 		private Label noteNameLabel;
+		private Button deleteNoteButton;
 		public Label NoteNameLabel => noteNameLabel;
 
 		private Note note;
@@ -18,10 +19,30 @@ namespace NotepadApp
 			BackColor = Color.FromArgb(28, 170, 252);
 			Click += NoteUI_Click;
 
-			CreateNoteNameLabel();
+			InitializeDeleteNoteButton();
+
+			InitializeNoteNameLabel();
 		}
 
-		private void CreateNoteNameLabel()
+		private void InitializeDeleteNoteButton()
+		{
+			deleteNoteButton = new Button();
+
+			deleteNoteButton.Font = new Font("Microsoft Sans Serif", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			deleteNoteButton.ForeColor = Color.White;
+			deleteNoteButton.Location = new Point(160, 0);
+			deleteNoteButton.FlatStyle = FlatStyle.Flat;
+			deleteNoteButton.FlatAppearance.BorderColor = Color.White;
+			deleteNoteButton.Size = new Size(40, 40);
+			deleteNoteButton.Text = "X";
+			deleteNoteButton.Click += DeleteNoteButton_Click;
+
+			Controls.Add(deleteNoteButton);
+		}
+
+		private void DeleteNoteButton_Click(object sender, EventArgs e) => Dispose();
+
+		private void InitializeNoteNameLabel()
 		{
 			noteNameLabel = new Label();
 
@@ -41,10 +62,14 @@ namespace NotepadApp
 
 		private void NoteUI_Click(object sender, EventArgs e)
 		{
-			NoteDetail noteDetail = new NoteDetail();
-			noteDetail.NoteNameLabel.Text = note.Name;
-			noteDetail.NoteMessageTextBox.Text = note.Message;
-			noteDetail.Show();
+			if (!Notepad.OneNoteIsAlreadyOpen)
+			{
+				NoteDetail noteDetail = new NoteDetail();
+				noteDetail.NoteNameLabel.Text = note.Name;
+				noteDetail.NoteMessageTextBox.Text = note.Message;
+				noteDetail.Show();
+				Notepad.OneNoteIsAlreadyOpen = true;
+			}
 		}
 	}
 }
