@@ -124,7 +124,7 @@ namespace NotepadApp
 		{
 			string[] userInfoArray = File.ReadAllLines(path);
 
-			User userAccountInDatabase = default;
+			User userAccountInDatabase = new User("", "");
 
 			foreach (string userInfo in userInfoArray)
 			{

@@ -36,7 +36,7 @@ namespace NotepadApp
 			}
 		}
 
-        private void noteNameLabel_MouseDown(object sender, MouseEventArgs e)
+        private void NoteNameLabel_MouseDown(object sender, MouseEventArgs e)
         {
 			if (e.Button == MouseButtons.Left && e.Clicks == 1)
 			{

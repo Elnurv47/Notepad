@@ -58,7 +58,7 @@ namespace NotepadApp
             this.noteNameLabel.Size = new System.Drawing.Size(138, 37);
             this.noteNameLabel.TabIndex = 44;
             this.noteNameLabel.Text = "Note Name";
-            this.noteNameLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.noteNameLabel_MouseDown);
+            this.noteNameLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NoteNameLabel_MouseDown);
             // 
             // noteMessageTextBox
             // 
